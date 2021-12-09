@@ -74,10 +74,53 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
+
+
+            @auth
+
+            <div class="container"> 
+                  <div class="row">
+                    <div class="col-md-4">
+                    
+                    <ul class="list-group">
+
+                            <li class="list-group-item">
+                            
+                                <a href="">Post</a>
+                            
+                            </li>
+                            <li class="list-group-item">
+                            
+                            <a href="">Category</a>
+                        
+                        </li>
+                    
+                    </ul>
+                    
+                    </div>
+                
+                         <div class="col-md-8">
+                         
+                         
+                                 @yield('content')
+                         
+                         </div>                 
+                      </div>
+                </div>
+
+
+            @else
+            
             @yield('content')
-        </main>
+
+
+            </main>
+            @endauth
+            
+
+
+        
     </div>
 </body>
 </html>
