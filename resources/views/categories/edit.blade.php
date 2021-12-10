@@ -6,7 +6,7 @@
    
    <div class="card card-default">
     
-    <div class="card-header">Add Categorie</div>
+    <div class="card-header">Edit Categorie</div>
     
     <div class="card-body">
     
@@ -29,18 +29,20 @@
 
     @endif
     
-    <form action="{{route('categories.store')}}" method="post">
-    @csrf
-    
+    <form action="{{route('categories.update',$category->id)}}" method="post">
+  
+  @method('PUT')
+  @csrf
+
     <div class="form-group">
     
     <label for="name">Name</label>
-    <input type="text" class="form-control" name="name">
+    <input type="text" class="form-control" value="{{$category->name}}" name="name">
     
     <div class="form-group">
     
-    <button class="btn btn-success mt-2 ">Add Category</button>
-    
+    <button type="submit"class="btn btn-success mt-2 ">Edit Category</button>
+    <a href="/categories" class="btn btn-primary mt-2">Back</a>
     </div>
     
     </div>
@@ -59,5 +61,3 @@
 
 
 @endsection
-
-

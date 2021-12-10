@@ -30,11 +30,16 @@
         
         @foreach($categories as $category)
 
-            <tr>
+        <tr>
             
-                <td>{{$category->name}}</td>
+            <td>{{$category->name}}
             
-            </tr>
+            <a href="{{route('categories.destroy', $category->id)}}" class="btn btn-danger btn-sm ms-2 float-end">Cancel</a>
+                <a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm  ms-2 float-end">Edit</a>
+                <a href="{{route('categories.show',$category->id)}}" class="btn btn-primary btn-sm ms-2 float-end">Details</a>
+                
+            </td>
+     </tr>
             
 
 

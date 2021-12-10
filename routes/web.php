@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('categories','App\Http\Controllers\CategoriesController');
+
+Route::get('categories/{category}/destroy',[CategoriesController::class,'destroy'])->name('categories.destroy');
