@@ -17,11 +17,13 @@
 
     <div class="card-body">
     
-  <table class="crad-table">
+  <table class="card-table">
   
         <thead>
 
             <th>Name</th>
+
+            <th></th>
         
         </thead>
 
@@ -31,33 +33,64 @@
         @foreach($categories as $category)
 
         <tr>
+            <td>{{$category->name}}</td>
+        
+        <td>
+            <button class="btn btn-danger btn-sm ms-1 float-end" onclick='manegeDelete("{{$category->id}}")'>Delete</button>
+            <a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm  ms-5 float-end">Edit</a>
             
-            <td>{{$category->name}}
-            
-            <a href="{{route('categories.destroy', $category->id)}}" class="btn btn-danger btn-sm ms-2 float-end">Cancel</a>
-                <a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm  ms-2 float-end">Edit</a>
-                <a href="{{route('categories.show',$category->id)}}" class="btn btn-primary btn-sm ms-2 float-end">Details</a>
-                
-            </td>
-     </tr>
-            
+        </td>
 
-
-         
-
+        </tr>
         @endforeach
-        </tbody>
+          </tbody>
+        </table>
+
+<!-- Modal -->
+
+<form action="" method="POST" id="deleteCategoryForm">
+
+@method('DELETE')
+
+@csrf
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModal">Delete Category</h5> 
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center text-bold">
+            Are you sure you want to delete this category
+        </div>
+      </div>
   
-  </table>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No go back</button>
+        <button type="submit" class="btn btn-danger">Yes delete</button>
+      </div>
     </div>
+  </div>
+</div>
+</form>
+
+     </div>
     
-    </div>
-
-   
-   </div>
-
-
-
+    </div> 
 @endsection
 
 
+@section('script')
+<script>
+
+function manegeDelete(id){
+$('#deleteModal').modal('show');
+let form=document.getElementById('deleteCategoryForm');
+form.action="categories/"+id;
+
+}
+
+</script>
+@endsection

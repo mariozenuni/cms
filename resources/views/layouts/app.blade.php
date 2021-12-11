@@ -132,8 +132,9 @@
 
             </main>
             @endauth
+            <script src="https://code.jquery.com/jquery-3.6.0.slim.js"crossorigin="anonymous"></script>
             
-
+        @yield('script')
 
         
     </div>

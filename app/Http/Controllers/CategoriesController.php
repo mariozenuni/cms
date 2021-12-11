@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\Categories\CreateCategoryRequest;
+use App\Http\Requests\Categories\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -58,11 +59,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show()
     {
-        return view('categories.show')->with('category',$category);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,7 +72,7 @@ class CategoriesController extends Controller
 
     {
 
-        return view('categories.edit')->with('category',$category);//
+        return view('categories.create')->with('category',$category);//
     }
 
     /**
@@ -83,10 +82,13 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
 
     {
-        $category->name=$request->input('name');
+        $category->update([
+            'name'=>$request->name
+
+        ]);
       
         $category->save();
 
