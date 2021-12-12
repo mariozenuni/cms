@@ -6,33 +6,39 @@
 
 <div class="card-header">
 
-Add Post
+  {{isset($post)?'Edit Post':'Add Post'}}
 
 </div>
 <div class="card">
 <div class="card-body">
 
-<form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
-    @csrf
+<form action="{{isset($post)?route('posts.update',$post->id):route('posts.store')}}" method="POST" enctype="multipart/form-data">
+   
+ @csrf
+
+ @if(isset($post))
+    @method('PUT')
+@endif
+   
 
 <div class="form-group">
 
         <label for="title">Title</label>
 
-        <input type="text" class="form-control" name="title" id="tilte">
+        <input type="text" class="form-control" name="title" id="tilte" value="{{isset($post)?$post->title:''}}">
 
 </div>
 <div class="form-group">
 
         <label for="description">Description</label>
 
-        <textarea name="description" id="description" cols="5" rows="5" class="form-control" ></textarea>
+        <textarea name="description" id="description" cols="5" rows="5" class="form-control" >{{isset($post)?$post->description:''}}</textarea>
 </div>
 
 <div class="form-group">
 
         <label for="content">Content</label>
-        <input id="content" type="hidden" name="content">
+        <input id="content" type="hidden" name="content" value="{{isset($post)?$post->content:''}}">
          <trix-editor input="content"></trix-editor>
 
 </div>
@@ -41,21 +47,29 @@ Add Post
 
         <label for="published_at">Published at</label>
 
-        <input type="text" class="form-control" name="published_at" id="published_at">
+        <input type="text" class="form-control" name="published_at" id="published_at" value="{{isset($post)?$post->published_at:''}}">
 
 </div>
 
 
 <div class="form-group">
 
-        <label for="image">Image</label>
+        <label for="image" class="mt-2">Image</label>
 
-        <input type="file" name="image" class="form-control">
+        @if(isset($post))
+                <img src="{{asset('storage/'. $post->image)}}" width="100%"  class="my-2"  alt="image">
+        @endif
+
+        <input type="file" name="image" class="form-control mt-2">
 </div>
 
 <div class="form-group">
 
-         <button type="submit" class="btn btn-success my-3">Add Posts</button>
+         <button type="submit" class="btn btn-success my-3">
+         
+         {{isset($post)?'Edit Post': 'Add Post'}}
+         
+         </button>
 
 </div>
 </form>
