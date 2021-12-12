@@ -15,16 +15,14 @@
     
     <div class="card-header">Categorie</div>
 
+<div class="card">
     <div class="card-body">
-    
-  <table class="card-table">
+       <table class="table">
   
         <thead>
 
             <th>Name</th>
 
-            <th></th>
-        
         </thead>
 
         <tbody>
@@ -45,7 +43,9 @@
         @endforeach
           </tbody>
         </table>
-
+        </div>
+        </div>
+    </div> 
 <!-- Modal -->
 
 <form action="" method="POST" id="deleteCategoryForm">
@@ -76,9 +76,7 @@
 </div>
 </form>
 
-     </div>
-    
-    </div> 
+  
 @endsection
 
 
@@ -86,9 +84,11 @@
 <script>
 
 function manegeDelete(id){
-$('#deleteModal').modal('show');
+
 let form=document.getElementById('deleteCategoryForm');
 form.action="categories/"+id;
+
+$('#deleteModal').modal('show');
 
 }
 

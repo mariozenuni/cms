@@ -49,6 +49,7 @@
     <label for="name">Name</label>
     <input type="text" class="form-control" value="{{!isset($category) ? '' : $category->name}}" name="name">
     
+    </div>
     <div class="form-group">
     
     <button class="btn btn-success mt-2 ">
