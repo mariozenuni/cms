@@ -32,8 +32,9 @@ Add Post
 <div class="form-group">
 
         <label for="content">Content</label>
+        <input id="content" type="hidden" name="content">
+         <trix-editor input="content"></trix-editor>
 
-        <textarea name="content" id="content" cols="5" rows="5" class="form-control" ></textarea>
 </div>
 
 <div class="form-group">
@@ -64,7 +65,30 @@ Add Post
 </div>
 </div>
 
+@endsection
+
+@section('scripts')
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
 
+flatpickr('#published_at', {
+
+        
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+     
+
+});
+
+</script>
+
+@endsection
+
+@section('css')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Posts\CreatePostsRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 class PostsController extends Controller
 {
@@ -46,6 +47,7 @@ class PostsController extends Controller
             'description'=>$request->description,
             'content'=>$request->content,
             'image'=>$request->image->store('posts'),
+            'published_at'=>$request->published_at
         ]);
 
     
@@ -95,8 +97,47 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($post)
+
     {
-        //
+        
+         $post=Post::withTrashed()
+         ->where('id',$post)
+         ->firstOrFail();
+
+        //dd($post);
+
+       if($post->trashed()){
+        
+        Storage::delete($post->image);
+
+            $post->forceDelete();
+
+        }else{
+            $post->delete();
+        }
+
+        
+
+        session()->flash('success','Posts deleted');   
+        
+         
+         return redirect(route('posts.index'));     //
+    }
+
+      /**
+     * Display a listing of the resource trashed.
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function trashed(){
+
+
+        $trashed=Post::onlyTrashed()->get();
+
+        return view('posts.index')->with('posts',$trashed);
+
     }
 }

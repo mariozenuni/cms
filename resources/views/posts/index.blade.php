@@ -13,8 +13,9 @@
     
     <div class="card-header">Post</div>
 
+
     <div class="card-body">
-    
+    @if($posts->count()>0)
           <table class="table">
 
             <thead>
@@ -42,13 +43,24 @@
                         
                         </td>
                         <td>
-                        
-                        <a href="" class="btn btn-info btn-sm">Edit</a>
-                          
+                        @if(!$post->trashed())
+                            <a href="" class="btn btn-info btn-sm">Edit</a>
+                          @endif
                         </td>
                         <td>
+                        <form action="{{route('posts.destroy',$post->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
                         
-                        <a href="" class="btn btn-danger btn-sm">Trash</a>
+                        
+                        <button type="submit" class="btn btn-danger btn-sm">
+                        
+                               {{$post->trashed()?'Delete':'Trash'}}
+                        
+                        </button>
+                        
+                        </form>
+                      
                           
                         </td>
                     </tr>
@@ -59,6 +71,9 @@
           
           
           </table>
+      @else 
+        No post available     
+     @endif     
     </div>
 
 </div>

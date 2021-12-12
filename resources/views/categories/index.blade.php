@@ -17,6 +17,8 @@
 
 <div class="card">
     <div class="card-body">
+
+    @if($categories->count()>0)
        <table class="table">
   
         <thead>
@@ -46,6 +48,9 @@
         </div>
         </div>
     </div> 
+    @else
+    No category available
+    @endif
 <!-- Modal -->
 
 <form action="" method="POST" id="deleteCategoryForm">
