@@ -70,14 +70,9 @@
         <select name="category" id="category" class="form-control">
         @foreach($categories as $category)
     
-        @if(isset($post))
-                @if($post->category_id===$post->category->id)
-                                selected
-                @endif
-                <option value="{{$category->id}}">{{$category->name}}</option>
-                
-        
-        @endif
+      
+        <option value="{{isset($post)?$post->category->id:category->id}}">{{$post->category->id}}-{{$post->category->name}}</option>
+
         @endforeach
         </select>
 

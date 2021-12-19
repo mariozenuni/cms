@@ -71,12 +71,7 @@
         @foreach($categories as $category)
     
         @if(isset($post))
-                @if($post->category_id===$post->category->id)
-                                selected
-                @endif
-                <option value="{{$category->id}}">{{$category->name}}</option>
-                
-        
+        <option value="{{category->id}}">{{$category->name}}</option>
         @endif
         @endforeach
         </select>

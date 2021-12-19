@@ -44,7 +44,7 @@
                         
                         </td>
                         <td>
-                         <a href="{{route('categories.edit',$post->category->id)}}">{{$post->category->name}}</a>
+                         <a href="{{route('posts.edit',$post->id)}}"></a>{{$post->category->name}}
                         
                         </td>
                        

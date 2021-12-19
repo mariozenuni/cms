@@ -72,10 +72,10 @@
     
         @if(isset($post))
                 @if($post->category_id===$post->category->id)
-                                selected
-                @endif
+                <option value="{{$post->category->id}}">{{$post->category->id}}-{{$post->category->name}}</option>
+                @else
                 <option value="{{$category->id}}">{{$category->name}}</option>
-                
+                @endif
         
         @endif
         @endforeach

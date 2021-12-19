@@ -19,7 +19,7 @@ class PostsController extends Controller
                'create',
                'store',
 
-           ]);
+           ]) 
         }
 
 

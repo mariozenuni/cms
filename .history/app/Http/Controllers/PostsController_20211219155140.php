@@ -11,18 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class PostsController extends Controller
-
 {
-        public function __construct()
-        {
-           $this->middleware('verifyCategoriesCount')->only([
-               'create',
-               'store',
-
-           ]);
-        }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +21,7 @@ class PostsController extends Controller
 
 
     {
-        
+        dd(Post::first()->category->id);
         return view('posts.index')->with('posts',Post::all());
     }
 

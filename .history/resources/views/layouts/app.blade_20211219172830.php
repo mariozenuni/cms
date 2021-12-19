@@ -96,7 +96,7 @@
 @endif
 @if(session()->has('error'))
 
-<div class="alert alert-danger">
+<div class="alert alert-alert">
 
     {{session()->get('error')}};
 
