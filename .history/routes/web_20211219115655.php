@@ -25,5 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('categories','App\Http\Controllers\CategoriesController');
 Route::resource('posts','App\Http\Controllers\PostsController');
 Route::get('trashed-posts','App\Http\Controllers\PostsController@trashed')->name('trashed-posts.index');
-Route::put('post-restore','App\Http\Controllers\PostsController@restore')->name('restore-posts');
+Route::put('post-restore','App\Http\Controllers\PostsController@restore')->name('restore-posts.update');
 

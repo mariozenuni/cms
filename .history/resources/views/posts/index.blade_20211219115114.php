@@ -61,7 +61,7 @@
                         
                         <button type="submit" class="btn btn-danger btn-sm">
                         
-                               {{$post->trashed()?'Delete':'Trash'}}
+                               {{!$post->trashed()?'Delete':'Trash'}}
                         
                         </button>
                         

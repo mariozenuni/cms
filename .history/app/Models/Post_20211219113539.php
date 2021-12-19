@@ -22,7 +22,7 @@ class Post extends Model
 
     ];
 
-    public function cancel_image(){
+    public function delete_image(){
         Storage::delete($this->image);
     }
 

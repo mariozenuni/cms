@@ -36,7 +36,7 @@
             <td>{{$category->name}}</td>
         
         <td>
-            <button class="btn btn-danger btn-sm ms-1 float-end" onclick='manegeDelete("{{$category->id}}")'>Delete</button>
+            <button class="btn btn-danger btn-sm ms-1 float-end" onclick='manageDelete("{{$category->id}}")'>Delete</button>
             <a href="{{route('categories.edit',$category->id)}}" class="btn btn-info btn-sm  ms-5 float-end">Edit</a>
             
         </td>
@@ -88,7 +88,7 @@
 @section('script')
 <script>
 
-function manegeDelete(id){
+function manageDelete(id){
 
 let form=document.getElementById('deleteCategoryForm');
 form.action="categories/"+id;

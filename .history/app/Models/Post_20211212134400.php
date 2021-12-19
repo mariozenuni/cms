@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
@@ -21,10 +20,4 @@ class Post extends Model
             'published_at'
 
     ];
-
-    public function cancel_image(){
-        Storage::delete($this->image);
-    }
-
-
 }

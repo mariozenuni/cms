@@ -42,17 +42,13 @@
                        {{$post->title}}
                         
                         </td>
-                       
-                        @if(!$post->trashed())
                         <td>
+                        @if($post->trashed())
                             <a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm">Edit</a>
-                        </td>
+
                             @else 
-                            <td>
-                            <a href="{{route('posts.edit',$post->id)}}" class="btn btn-info btn-sm">Restore</a>
-                            </td>
                           @endif
-                       
+                        </td>
                         <td>
                         <form action="{{route('posts.destroy',$post->id)}}" method="POST">
                         @method('DELETE')
@@ -61,7 +57,7 @@
                         
                         <button type="submit" class="btn btn-danger btn-sm">
                         
-                               {{$post->trashed()?'Delete':'Trash'}}
+                               {{!$post->trashed()?'Delete':'Trash'}}
                         
                         </button>
                         

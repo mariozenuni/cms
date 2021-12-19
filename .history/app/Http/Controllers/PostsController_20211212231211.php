@@ -7,8 +7,7 @@ use App\Http\Requests\Posts\UpdatePostsRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-
+use Illuminate\Support\Facades\Storage;
 class PostsController extends Controller
 {
     /**
@@ -98,8 +97,8 @@ class PostsController extends Controller
                 
                 $image=$request->image->store('posts');
 
-              $post->cancel_image();
-             
+                
+                Storage::delete($post->image);
 
                 $data['image']=$image;
             }
@@ -129,10 +128,8 @@ class PostsController extends Controller
         //dd($post);
 
        if($post->trashed()){
-
-        $post->cancel_image();
         
-        //Storage::delete($post->image);
+        Storage::delete($post->image);
 
             $post->forceDelete();
 
