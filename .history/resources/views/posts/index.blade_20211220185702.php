@@ -16,7 +16,7 @@
 
     <div class="card-body">
       
-    @if($posts->count()>0 && $categories->count()>0)
+    @if($posts->count()>0)
           <table class="table">
 
             <thead>

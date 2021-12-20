@@ -73,10 +73,11 @@
         @if(isset($post))
                 @if($post->category_id===$post->category->id)
                                 selected
-                @endif           
+                @endif
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                
         
         @endif
-        <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
         </select>
 
@@ -101,7 +102,7 @@
 
 @endsection
 
-@section('script')
+@section('scripts')
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
