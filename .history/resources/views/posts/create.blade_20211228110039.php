@@ -83,7 +83,7 @@
 
 </div>
 
-@if($tags->count()>0)
+@if($tag->count()>0)
 
 <div class="form-group">
         <lable for="tags">Tags</lable>

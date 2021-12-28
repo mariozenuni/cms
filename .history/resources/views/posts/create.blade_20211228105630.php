@@ -83,11 +83,12 @@
 
 </div>
 
-@if($tags->count()>0)
-
 <div class="form-group">
         <lable for="tags">Tags</lable>
-       
+        @if(isset($tag))
+                selected
+
+        @endif
                 <select name="tags" id="tags" class="form-control" multiple>
                         @foreach($tags as $tag)
                         <option value="{{$tag->id}}">{{$tag->name}}</option>  
@@ -95,7 +96,6 @@
                 </select>
 </div>
 
-@endif
         <div class="form-group">
 
          <button type="submit" class="btn btn-success my-3">

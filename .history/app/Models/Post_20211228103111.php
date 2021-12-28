@@ -33,7 +33,7 @@ class Post extends Model
                return $this->belongsTo(Category::class);
         }
      /**
-     * This function implements the reletionship between post and tag 
+     * This function implement the reletionship between post and tag 
      */
         public function tags()
         {

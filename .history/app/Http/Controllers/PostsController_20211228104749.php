@@ -91,7 +91,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-         return view('posts.create')->with('post',$post)->with('categories',Category::all())->with('tags',Tag::all());//
+         return view('posts.create')->with('post',$post)->with('categories',Category::all());//
     }
 
     /**
