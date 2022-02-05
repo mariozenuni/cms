@@ -1,5 +1,8 @@
 <?php
-
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Middleware\VerifyCategoriesCount;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('welcome');
 });
-<<<<<<< Updated upstream
-=======
 
 Auth::routes();
 
@@ -52,4 +53,3 @@ Route::get('profile', function(){
     return view('candidates.profile');
 });
 
->>>>>>> Stashed changes
